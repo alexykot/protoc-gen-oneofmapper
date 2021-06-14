@@ -67,7 +67,10 @@ package %s
                 }
 
                 for oneofName, oneofFields := range oneofTypes {
+                    oneofName = strings.Replace(oneofName, "_", " ", -1)
                     oneofName = strings.Title(oneofName)
+                    oneofName = strings.Replace(oneofName, " ", "", -1)
+
                     buf.Write([]byte(fmt.Sprintf("type OneOf%s string\n\n", oneofName)))
                     buf.Write([]byte("const (\n"))
 
